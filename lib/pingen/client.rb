@@ -21,6 +21,10 @@ module Pingen
       get_request("/document/list")
     end
 
+    def get(id)
+      get_request("/document/get/id/#{id}")
+    end
+
     def get_request(path, params = nil, request_params = {})
       url = build_url(path)
       req = build_get_request(url, params)
