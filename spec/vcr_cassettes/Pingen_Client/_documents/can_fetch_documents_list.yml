@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.pingen.com/document/list/token/<PINGEN_API_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - api.pingen.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Tue, 22 Jun 2021 10:22:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - language=de; expires=Wed, 22-Jun-2022 10:22:00 GMT; Max-Age=31536000
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"error":false,"page":1,"pages":1,"count":4,"items":[{"id":804363203,"filename":"WelcomeLetter-it.pdf","date":"2021-06-05
+        15:16:01","user_id":137034325,"address":"Renuo AG\nIndustriestrasse 44, 8304 Wallisellen\nSvizzera","country":"CH","size":940171,"pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"rightaddress":0,"status":1,"sent":1,"fileremoved":0,"requirement_failure":0},{"id":257554787,"filename":"WelcomeLetter-it.pdf","date":"2021-06-04
+        21:31:09","user_id":137034325,"address":"Renuo AG\nIndustriestrasse 44, 8304 Wallisellen\nSvizzera","country":null,"size":866905,"pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"rightaddress":0,"status":1,"sent":0,"fileremoved":0,"requirement_failure":4096},{"id":205278335,"filename":"WelcomeLetter-it.pdf","date":"2021-06-04
+        21:27:32","user_id":137034325,"address":"Renuo AG\nIndustriestrasse 44, 8304 Wallisellen\nSvizzera","country":null,"size":794972,"pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"rightaddress":0,"status":1,"sent":0,"fileremoved":0,"requirement_failure":4096},{"id":374906715,"filename":"welcome-letter-it.pdf","date":"2021-06-04
+        21:22:00","user_id":137034325,"address":null,"country":null,"size":692021,"pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"rightaddress":0,"status":1,"sent":0,"fileremoved":0,"requirement_failure":7168}]}'
+  recorded_at: Tue, 22 Jun 2021 10:22:00 GMT
+recorded_with: VCR 6.0.0
