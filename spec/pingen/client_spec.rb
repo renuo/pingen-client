@@ -1,5 +1,3 @@
-require "dotenv/load"
-
 RSpec.describe Pingen::Client, :vcr do
   let(:instance) { Pingen::Client.new }
 
