@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.pingen.com/document/delete/id/335344089/token/PINGEN_API_TOKEN
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Wed, 23 Jun 2021 09:41:51 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - language=de; expires=Thu, 23-Jun-2022 09:41:51 GMT; Max-Age=31536000
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"error":false}'
+  recorded_at: Wed, 23 Jun 2021 09:41:51 GMT
+recorded_with: VCR 6.0.0
