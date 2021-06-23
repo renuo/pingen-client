@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.pingen.com/document/get/id/804363203/token/<PINGEN_API_TOKEN>
+    uri: https://api.pingen.com/document/get/id/804363203/token/PINGEN_API_TOKEN
     body:
       encoding: US-ASCII
       string: ''

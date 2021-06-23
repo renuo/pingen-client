@@ -1,4 +1,5 @@
 require "net/http"
+require "net/http/post/multipart"
 require_relative "response"
 
 module Pingen
@@ -25,6 +26,10 @@ module Pingen
       get_request("/document/get/id/#{id}")
     end
 
+    def upload(pdf)
+      post_multipart_request("/document/upload", pdf, {})
+    end
+
     def get_request(path, params = nil, request_params = {})
       url = build_url(path)
       req = build_get_request(url, params)
@@ -34,6 +39,12 @@ module Pingen
     def post_request(path, params, request_params = {})
       url = build_url(path)
       request = build_post_request(url, params)
+      perform_request(url, request, request_params)
+    end
+
+    def post_multipart_request(path, file, params, request_params = {})
+      url = build_url(path)
+      request = build_multipart_post_request(url, file, params)
       perform_request(url, request, request_params)
     end
 
@@ -49,6 +60,13 @@ module Pingen
     def build_get_request(url, params)
       url.query = URI.encode_www_form(params) unless params.nil?
       Net::HTTP::Get.new(url).tap(&method(:header_params))
+    end
+
+    def build_multipart_post_request(url, file_path, params)
+      Net::HTTP::Post::Multipart.new(url.path,
+        params.merge("file" => UploadIO.new(file_path,
+          "application/pdf",
+          File.basename(file_path))))
     end
 
     def build_post_request(url, params)
