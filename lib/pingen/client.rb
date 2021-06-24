@@ -38,8 +38,8 @@ module Pingen
       post_request("/document/delete/id/#{id}", {})
     end
 
-    def schedule_send(id, speed, color: false)
-      post_request("/document/send/id/#{id}", {color: color ? 1 : 0, speed: speed})
+    def schedule_send(id, fast_send: false, color: false)
+      post_request("/document/send/id/#{id}", {color: color ? 1 : 0, speed: fast_send ? 1 : 2})
     end
 
     def get_request(path, params = nil, request_params = {})

@@ -50,7 +50,7 @@ RSpec.describe Pingen::Client, :vcr do
   end
 
   describe "#schedule_send" do
-    subject(:response) { instance.schedule_send(id, 2) }
+    subject(:response) { instance.schedule_send(id) }
 
     let(:id) { "804363203" }
 
