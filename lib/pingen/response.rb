@@ -6,6 +6,8 @@ module Pingen
 
     def self.from(response)
       new(JSON.parse(response.body, symbolize_names: true), response.code.to_i)
+    rescue JSON::ParserError
+      new(response.body, response.code.to_i)
     end
 
     def initialize(json, code)

@@ -18,7 +18,7 @@ module Pingen
       @logger = logger
     end
 
-    def documents
+    def list
       get_request("/document/list")
     end
 
@@ -28,6 +28,18 @@ module Pingen
 
     def upload(pdf)
       post_multipart_request("/document/upload", pdf, {})
+    end
+
+    def pdf(id)
+      get_request("/document/pdf/id/#{id}")
+    end
+
+    def delete(id)
+      post_request("/document/delete/id/#{id}", {})
+    end
+
+    def schedule_send(id, fast_send: false, color: false)
+      post_request("/document/send/id/#{id}", {color: color ? 1 : 0, speed: fast_send ? 1 : 2})
     end
 
     def get_request(path, params = nil, request_params = {})
