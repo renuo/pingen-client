@@ -69,4 +69,13 @@ RSpec.describe Pingen::Client, :vcr do
       end
     end
   end
+
+  describe "#track" do
+    subject(:response) { instance.track("51258965") }
+
+    it "returns a list of trackings" do
+      expect(response).to be_ok
+      expect(response.json).to match(error: false, item: a_hash_including(:tracking_id, :product, :status, :events))
+    end
+  end
 end

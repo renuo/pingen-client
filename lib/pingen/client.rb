@@ -42,6 +42,10 @@ module Pingen
       post_request("/document/send/id/#{id}", {color: color ? 1 : 0, speed: fast_send ? 1 : 2})
     end
 
+    def track(send_id)
+      get_request("/send/track/id/#{send_id}")
+    end
+
     def get_request(path, params = nil, request_params = {})
       url = build_url(path)
       req = build_get_request(url, params)
