@@ -24,11 +24,21 @@ RSpec.describe Pingen::Client, :vcr do
   describe "#upload" do
     subject(:response) { instance.upload(file) }
 
-    let(:file) { File.join("spec/fixtures/test.pdf") }
+    let(:file) { File.join("spec/fixtures/test_valid.pdf") }
 
     it "uploads the file" do
       expect(response).to be_ok
       expect(response.json).to match(a_hash_including(item: a_hash_including(filename: "test.pdf")))
+    end
+
+    context 'when also sending the file' do
+      subject(:response) { instance.upload(file, send: true) }
+
+      it "uploads file and schedules the sending" do
+        expect(response).to be_ok
+        expect(response.json).to match(a_hash_including(item: a_hash_including(status: 1, requirement_failure: 0),
+                                                        send: [a_hash_including(:document_id, :send_id)]))
+      end
     end
   end
 

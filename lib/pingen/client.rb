@@ -26,8 +26,14 @@ module Pingen
       get_request("/document/get/id/#{id}")
     end
 
-    def upload(pdf)
-      post_multipart_request("/document/upload", pdf, {})
+    # send_params:
+    # fast_send: true | false, default: false.
+    #   true - A Post
+    #   false - B Post
+    # color: true | false, default: false
+    def upload(pdf, send: false, **send_params)
+      data = { send: send }.merge(send ? parse_send_params(send_params) : {})
+      post_multipart_request("/document/upload", pdf, data: data.to_json)
     end
 
     def pdf(id)
@@ -38,8 +44,13 @@ module Pingen
       post_request("/document/delete/id/#{id}", {})
     end
 
-    def schedule_send(id, fast_send: false, color: false)
-      post_request("/document/send/id/#{id}", {color: color ? 1 : 0, speed: fast_send ? 1 : 2})
+    # send_params:
+    # fast_send: true | false, default: false.
+    #   true - A Post
+    #   false - B Post
+    # color: true | false, default: false
+    def schedule_send(id, **send_params)
+      post_request("/document/send/id/#{id}", parse_send_params(send_params))
     end
 
     def track(send_id)
@@ -110,6 +121,12 @@ module Pingen
     def header_params(request)
       request["Content-Type"] = "application/json"
       request["Accept"] = "application/json"
+    end
+
+    private
+
+    def parse_send_params(**params)
+      {color: params[:color] ? 1 : 0, speed: params[:fast_send] ? 1 : 2}
     end
   end
 end
