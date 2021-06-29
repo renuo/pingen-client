@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.pingen.com/send/track/id/51258965/token/PINGEN_API_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - api.pingen.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 28 Jun 2021 15:37:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - language=de; expires=Tue, 28-Jun-2022 15:37:37 GMT; Max-Age=31536000
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"error":false,"item":{"tracking_id":"50505783.210607.051258965","product":"Priority","status":"Versendet","events":[{"processor":"Pingen
+        GmbH","date":"2021-06-05 15:20:09","type":1,"description":"Aufgabe zum Versand","zip":"Online","city":null,"country":null,"image_id":null,"data":null},{"processor":"Pingen
+        GmbH","date":"2021-06-07 06:17:00","type":1,"description":"\u00dcbermittlung
+        an Druckcenter","zip":8401,"city":"Winterthur","country":"CH","image_id":null,"data":null},{"processor":"Pingen
+        GmbH","date":"2021-06-07 19:15:14","type":1,"description":"\u00dcbergabe an
+        die Post","zip":8401,"city":"Winterthur","country":"CH","image_id":null,"data":null},{"processor":"Schweizerische
+        Post AG","date":"2021-06-08 22:00:09","type":1,"description":"Sendung sortiert","zip":8010,"city":"Z\u00fcrich
+        Briefzentrum","country":"CH","image_id":null,"data":null},{"processor":"Schweizerische
+        Post AG","date":"2021-06-09 02:08:13","type":1,"description":"Sendung sortiert","zip":8010,"city":"Z\u00fcrich
+        Briefzentrum","country":"CH","image_id":null,"data":null}]}}'
+  recorded_at: Mon, 28 Jun 2021 15:37:37 GMT
+recorded_with: VCR 6.0.0

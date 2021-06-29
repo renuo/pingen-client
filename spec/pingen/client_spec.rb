@@ -24,11 +24,21 @@ RSpec.describe Pingen::Client, :vcr do
   describe "#upload" do
     subject(:response) { instance.upload(file) }
 
-    let(:file) { File.join("spec/fixtures/test.pdf") }
+    let(:file) { File.join("spec/fixtures/test_valid.pdf") }
 
     it "uploads the file" do
       expect(response).to be_ok
       expect(response.json).to match(a_hash_including(item: a_hash_including(filename: "test.pdf")))
+    end
+
+    context "when also sending the file" do
+      subject(:response) { instance.upload(file, send: true) }
+
+      it "uploads file and schedules the sending" do
+        expect(response).to be_ok
+        expect(response.json).to match(a_hash_including(item: a_hash_including(status: 1, requirement_failure: 0),
+                                                        send: [a_hash_including(:document_id, :send_id)]))
+      end
     end
   end
 
@@ -67,6 +77,15 @@ RSpec.describe Pingen::Client, :vcr do
         expect(response.code).to eq 400
         expect(response.json).to match(error: true, errorcode: 2016, errormessage: "No valid country could be detected")
       end
+    end
+  end
+
+  describe "#track" do
+    subject(:response) { instance.track("51258965") }
+
+    it "returns a list of trackings" do
+      expect(response).to be_ok
+      expect(response.json).to match(error: false, item: a_hash_including(:tracking_id, :product, :status, :events))
     end
   end
 end
