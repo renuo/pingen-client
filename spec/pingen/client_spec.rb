@@ -31,7 +31,7 @@ RSpec.describe Pingen::Client, :vcr do
       expect(response.json).to match(a_hash_including(item: a_hash_including(filename: "test.pdf")))
     end
 
-    context 'when also sending the file' do
+    context "when also sending the file" do
       subject(:response) { instance.upload(file, send: true) }
 
       it "uploads file and schedules the sending" do

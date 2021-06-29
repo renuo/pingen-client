@@ -32,7 +32,7 @@ module Pingen
     #   false - B Post
     # color: true | false, default: false
     def upload(pdf, send: false, **send_params)
-      data = { send: send }.merge(send ? parse_send_params(send_params) : {})
+      data = {send: send}.merge(send ? parse_send_params(send_params) : {})
       post_multipart_request("/document/upload", pdf, data: data.to_json)
     end
 
