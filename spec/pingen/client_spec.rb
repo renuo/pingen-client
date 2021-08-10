@@ -1,6 +1,7 @@
 require "dotenv/load"
 
 RSpec.describe Pingen::Client, :vcr do
+  let(:file) { File.join("spec/fixtures/test_valid.pdf") }
   let(:instance) { Pingen::Client.new }
 
   describe "#list" do
@@ -23,8 +24,6 @@ RSpec.describe Pingen::Client, :vcr do
 
   describe "#upload" do
     subject(:response) { instance.upload(file) }
-
-    let(:file) { File.join("spec/fixtures/test_valid.pdf") }
 
     it "uploads the file" do
       expect(response).to be_ok
@@ -77,6 +76,16 @@ RSpec.describe Pingen::Client, :vcr do
         expect(response.code).to eq 400
         expect(response.json).to match(error: true, errorcode: 2016, errormessage: "No valid country could be detected")
       end
+    end
+  end
+
+  describe "#cancel_send" do
+    let(:send_id) { instance.upload(file, send: true).json.dig(:send, 0, :send_id) }
+    subject(:response) { instance.cancel_send(send_id) }
+
+    it "returns a successful response" do
+      expect(response).to be_ok
+      expect(response.json).to eq({error: false})
     end
   end
 

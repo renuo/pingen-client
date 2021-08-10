@@ -53,6 +53,11 @@ module Pingen
       post_request("/document/send/id/#{id}", parse_send_params(send_params))
     end
 
+    # allows you to cancel a pending send
+    def cancel_send(send_id)
+      get_request("/send/cancel/id/#{send_id}")
+    end
+
     def track(send_id)
       get_request("/send/track/id/#{send_id}")
     end
