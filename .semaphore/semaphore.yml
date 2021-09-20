@@ -26,5 +26,4 @@ blocks:
       jobs:
         - name: tests
           commands:
-            - bundle exec standardrb
-            - bundle exec rspec
+            - bin/check
