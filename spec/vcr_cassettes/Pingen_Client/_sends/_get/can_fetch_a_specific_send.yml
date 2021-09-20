@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.pingen.com/send/get/id/11659418/token/PINGEN_API_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - api.pingen.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 20 Sep 2021 08:25:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - language=de; expires=Tue, 20-Sep-2022 08:25:05 GMT; Max-Age=31536000
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"error":false,"item":{"id":11659418,"document_type":1,"document_id":422280501,"channel":1,"document_title":"5ac0ec45-7186-4a9d-a84a-6eded4139e9f.pdf","date":"2021-08-19
+        17:01:53","user_id":137034325,"speed":2,"color":0,"address":"Renuo NV NOK
+        NOK\nAndrea CEO\nIndustriestrasse 44\n8304 Wallisellen\nSchweiz","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"cost":1.4,"currency":"CHF","status":400}}'
+  recorded_at: Mon, 20 Sep 2021 08:25:06 GMT
+recorded_with: VCR 6.0.0

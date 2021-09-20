@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.pingen.com/send/list/token/PINGEN_API_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Host:
+      - api.pingen.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.10.3 (Ubuntu)
+      Date:
+      - Mon, 20 Sep 2021 08:21:51 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Set-Cookie:
+      - language=de; expires=Tue, 20-Sep-2022 08:21:51 GMT; Max-Age=31536000
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"error":false,"page":1,"pages":1,"count":3329,"items":[{"id":12820303,"document_type":1,"document_id":352826190,"channel":1,"document_title":"d2150110-b7ee-4020-bccb-553614b831b4.pdf","date":"2021-06-29
+        17:15:21","user_id":137034325,"speed":2,"color":0,"address":"Renuo NV NOK
+        NOK\nIndustriestrasse 44\n8304 Wallisellen\nSchweiz","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"cost":1.4,"currency":"CHF","status":400},{"id":54297590,"document_type":1,"document_id":352826190,"channel":1,"document_title":"d2150110-b7ee-4020-bccb-553614b831b4.pdf","date":"2021-06-29
+        13:19:10","user_id":137034325,"speed":2,"color":0,"address":"Renuo NV NOK
+        NOK\nIndustriestrasse 44\n8304 Wallisellen\nSchweiz","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"cost":1.4,"currency":"CHF","status":400},{"id":58387178,"document_type":1,"document_id":389117082,"channel":1,"document_title":"test_valid.pdf","date":"2021-06-29
+        13:02:47","user_id":137034325,"speed":2,"color":0,"address":"Renuo AG\nIndustriestrasse
+        44\n8304 Wallisellen\nSwitzerland","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"cost":1.4,"currency":"CHF","status":400},{"id":34885891,"document_type":1,"document_id":363977619,"channel":1,"document_title":"test_valid.pdf","date":"2021-06-29
+        12:59:57","user_id":137034325,"speed":2,"color":0,"address":"Renuo AG\nIndustriestrasse
+        44\n8304 Wallisellen\nSwitzerland","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"cost":1.4,"currency":"CHF","status":400},{"id":84376190,"document_type":1,"document_id":804363203,"channel":1,"document_title":"WelcomeLetter-rodi-it.pdf","date":"2021-06-23
+        12:00:33","user_id":137034325,"speed":2,"color":0,"address":"Signor\nAlessandro
+        Rodi\nLangfurren 26, 8057 Zurigo\nSvizzera","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":0}],"cost":1.4,"currency":"CHF","status":400},{"id":51258965,"document_type":1,"document_id":804363203,"channel":1,"document_title":"WelcomeLetter-rodi-it.pdf","date":"2021-06-05
+        15:20:09","user_id":137034325,"speed":1,"color":1,"address":"Signor\nAlessandro
+        Rodi\nLangfurren 26, 8057 Zurigo\nSvizzera","country":"CH","pages":1,"pagetype":[{"number":1,"type":1,"color":1}],"cost":1.65,"currency":"CHF","status":200}]}'
+  recorded_at: Mon, 20 Sep 2021 08:21:55 GMT
+recorded_with: VCR 6.0.0

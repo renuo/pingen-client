@@ -1,6 +1,8 @@
 require "net/http"
 require "net/http/post/multipart"
 require_relative "response"
+require_relative "documents"
+require_relative "sends"
 
 module Pingen
   class Client
@@ -18,48 +20,12 @@ module Pingen
       @logger = logger
     end
 
-    def list
-      get_request("/document/list")
+    def documents
+      @documents ||= Documents.new(self)
     end
 
-    def get(id)
-      get_request("/document/get/id/#{id}")
-    end
-
-    # send_params:
-    # fast_send: true | false, default: false.
-    #   true - A Post
-    #   false - B Post
-    # color: true | false, default: false
-    def upload(pdf, send: false, **send_params)
-      data = {send: send}.merge(send ? parse_send_params(send_params) : {})
-      post_multipart_request("/document/upload", pdf, data: data.to_json)
-    end
-
-    def pdf(id)
-      get_request("/document/pdf/id/#{id}")
-    end
-
-    def delete(id)
-      post_request("/document/delete/id/#{id}", {})
-    end
-
-    # send_params:
-    # fast_send: true | false, default: false.
-    #   true - A Post
-    #   false - B Post
-    # color: true | false, default: false
-    def schedule_send(id, **send_params)
-      post_request("/document/send/id/#{id}", parse_send_params(send_params))
-    end
-
-    # allows you to cancel a pending send
-    def cancel_send(send_id)
-      get_request("/send/cancel/id/#{send_id}")
-    end
-
-    def track(send_id)
-      get_request("/send/track/id/#{send_id}")
+    def sends
+      @sends ||= Sends.new(self)
     end
 
     def get_request(path, params = nil, request_params = {})
@@ -126,12 +92,6 @@ module Pingen
     def header_params(request)
       request["Content-Type"] = "application/json"
       request["Accept"] = "application/json"
-    end
-
-    private
-
-    def parse_send_params(**params)
-      {color: params[:color] ? 1 : 0, speed: params[:fast_send] ? 1 : 2}
     end
   end
 end
