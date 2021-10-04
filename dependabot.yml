@@ -1,22 +1,5 @@
 version: 2
 updates:
-  # Maintain dependencies for yarn/npm
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "monthly"
-      time: "07:00"
-      timezone: "Europe/Zurich"
-    rebase-strategy: "auto"
-    assignees:
-      - "Liberatys"
-    labels:
-      - "dep-update"
-    pull-request-branch-name:
-      separator: "-"
-    commit-message:
-      prefix: "yarn"
-      include: "scope"
 
   # Maintain dependencies for Bundler
   - package-ecosystem: "bundler"
