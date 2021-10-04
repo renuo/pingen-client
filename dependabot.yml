@@ -9,7 +9,7 @@ updates:
       time: "07:00"
       timezone: "Europe/Zurich"
     assignees:
-      - "Liberatys"
+      - "coorasse"
     labels:
       - "dep-update"
     pull-request-branch-name:
