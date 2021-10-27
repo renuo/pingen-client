@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pingen-client (0.2.0)
+    pingen-client (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -76,4 +76,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.2.20
+   2.2.27
