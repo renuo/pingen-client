@@ -12,23 +12,19 @@ module Pingen
       @client.get_request("/document/get/id/#{id}")
     end
 
-    # send_params:
     # fast_send: true | false, default: false.
     #   true - A Post
     #   false - B Post
-    # color: true | false, default: false
-    def upload(pdf, send: false, **send_params)
-      data = {send: send}.merge(send ? parse_send_params(send_params) : {})
+    def upload(pdf, send: false, fast_send: false, color: false)
+      data = {send: send}.merge(send ? parse_send_params(fast_send, color) : {})
       @client.post_multipart_request("/document/upload", pdf, data: data.to_json)
     end
 
-    # send_params:
     # fast_send: true | false, default: false.
     #   true - A Post
     #   false - B Post
-    # color: true | false, default: false
-    def send(id, **send_params)
-      @client.post_request("/document/send/id/#{id}", parse_send_params(send_params))
+    def send(id, fast_send: false, color: false)
+      @client.post_request("/document/send/id/#{id}", parse_send_params(fast_send, color))
     end
 
     def pdf(id)
@@ -41,8 +37,8 @@ module Pingen
 
     private
 
-    def parse_send_params(**params)
-      {color: params[:color] ? 1 : 0, speed: params[:fast_send] ? 1 : 2}
+    def parse_send_params(fast_send, color)
+      {color: color ? 1 : 0, speed: fast_send ? 1 : 2}
     end
   end
 end
